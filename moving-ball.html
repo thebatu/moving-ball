@@ -1,16 +1,33 @@
+<!DOCTYPE html>
 <html>
   <head>
     <script src="https://code.createjs.com/createjs-2015.05.21.min.js"></script>
     <script>
       
       function init() {
-        var stage = new createjs.Stage('stage'); 
+        var stage = new createjs.Stage('myCanvas');
 
+        var ball = new createjs.Shape();
+        ball.graphics.beginFill("#0000000").drawCircle(0,0,50);
+        ball.x = 50;
+        ball.y =200;
 
+        createjs.Tween.get(ball, {loop:true}).to({x:450},3000).to({x:50},3000);
+        createjs.Ticker.addEventListener("tick", tick);
+
+        stage.addChild(ball);
+        
       }
+
+      function tick(event){
+        stage.update();    
+      }
+
+
     </script>
   </head>
   <body onload="init();">
-    <canvas id="demoCanvas" width="500" height="500"></canvas>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    Alternative Content
   </body>
 </html>   
