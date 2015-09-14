@@ -3,11 +3,14 @@
   <head>
     <script src="https://code.createjs.com/createjs-2015.05.21.min.js"></script>
     <script>
-      
+
+      var stage;
+
       function init() {
-        var stage = new createjs.Stage('myCanvas');
+        stage = new createjs.Stage('myCanvas');
 
         var ball = new createjs.Shape();
+        ball.addEventListener("click",handleClick)
         ball.graphics.beginFill("#0000000").drawCircle(0,0,50);
         ball.x = 50;
         ball.y =200;
@@ -16,12 +19,21 @@
         createjs.Ticker.addEventListener("tick", tick);
 
         stage.addChild(ball);
-        
+
+
       }
 
-      function tick(event){
-        stage.update();    
+      function handleClick(event){
+        console.log("clicked");
       }
+
+
+      function tick(event){
+        stage.update();
+
+      }
+
+
 
 
     </script>
@@ -30,4 +42,4 @@
     <canvas id="myCanvas" width="500" height="500"></canvas>
     Alternative Content
   </body>
-</html>   
+</html>
