@@ -3,6 +3,8 @@
   <head>
     <script src="https://code.createjs.com/createjs-2015.05.21.min.js"></script>
     <script src="https://code.createjs.com/preloadjs-0.6.1.min.js"></script>
+    <script src="https://code.createjs.com/soundjs-0.6.1.min.js"></script></head>
+
     <script>
 
       var stage;
@@ -33,12 +35,12 @@
 
       function handleClick(event){
         console.log("calling" + queue);
-        var bmp = new createjs.Bitmap(queue.getResults("daisy"));
+        var bmp = new createjs.Bitmap(queue.getResult("daisy"));
         bmp.x = Math.random()*500;
         bmp.y = Math.random()*500;
         stage.addChild(bmp);
 
-        createJS.Sound.play("soundID");
+        createjs.Sound.play("soundID");
       }
 
 
