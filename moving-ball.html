@@ -5,9 +5,13 @@
     <script>
 
       var stage;
-
+      var queue;
       function init() {
         stage = new createjs.Stage('myCanvas');
+        queue = new createjs.LoadQueue();
+        queue.installPlugin(createjs.Sound);
+        queue.addEventListener("complete","handleComplete");
+        queue.loadManifest([{id:"daisy", src:"daisy.png"},{id:"soundID",src:"pop.mp3"}]);
 
         handleComplete();
 
