@@ -9,6 +9,7 @@
       function init() {
         stage = new createjs.Stage('myCanvas');
         queue = new createjs.LoadQueue(false);
+        console.log("defining" + queue);
         queue.installPlugin(createjs.Sound);
         queue.addEventListener("complete","handleComplete");
         queue.loadManifest([{id:"daisy", src:"daisy.png"},{id:"soundID",src:"pop.mp3"}]);
@@ -30,6 +31,7 @@
       }
 
       function handleClick(event){
+        console.log("calling" + queue);
         var bmp = new createjs.Bitmap(queue.getResults("daisy"));
         bmp.x = Math.random()*500;
         bmp.y = Math.random()*500;
