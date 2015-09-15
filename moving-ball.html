@@ -8,15 +8,12 @@
       var queue;
       function init() {
         stage = new createjs.Stage('myCanvas');
-        queue = new createjs.LoadQueue();
+        queue = new createjs.LoadQueue(false);
         queue.installPlugin(createjs.Sound);
         queue.addEventListener("complete","handleComplete");
         queue.loadManifest([{id:"daisy", src:"daisy.png"},{id:"soundID",src:"pop.mp3"}]);
 
         handleComplete();
-
-         createjs.Sound.registerSound("pop.mp3","soundID");
-         createjs.Sound.addEventListener("loadComplete","handleComplete");
       }
 
       function handleComplete(event){
@@ -33,6 +30,11 @@
       }
 
       function handleClick(event){
+        var bmp = new createjs.Bitmap(queue.getResults("daisy"));
+        bmp.x = Math.random()*500;
+        bmp.y = Math.random()*500;
+        stage.addChild(bmp);
+
         createJS.Sound.play("soundID");
       }
 
@@ -40,9 +42,6 @@
       function tick(event){
         stage.update();
       }
-
-
-
 
     </script>
   </head>
